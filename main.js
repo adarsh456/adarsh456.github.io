@@ -11,7 +11,7 @@ const levels = {
 }
 
 //to change level
-const currentLevel = levels.easy;
+let currentLevel = levels.easy;
 
 let time=currentLevel;
 let score=0;
@@ -24,12 +24,15 @@ const scoreDisplay = document.querySelector('#score');
 const timeDisplay = document.querySelector('#time');
 const message = document.querySelector('#message');
 const seconds = document.querySelector('#seconds');
+const easy = document.querySelector('#easy');
+const medium = document.querySelector('#medium');
+const hard = document.querySelector('#hard');
 
 //words array
 var words = ["monitor", "program", "application", "keyboard", "javascript", "gaming", "network"];
 
 //Initinalize the Game
-function init(){
+function init(){  
     //show seconds in UI
     seconds.innerHTML = currentLevel;
     //select word
@@ -40,6 +43,35 @@ function init(){
     setInterval(countdown,1000);
     //check game status
     setInterval(checkstatus,50);
+}
+
+  //event listner for difficulty click
+  easy.addEventListener('click',easylevel);
+  medium.addEventListener('click',mediumlevel);
+  hard.addEventListener('click',hardlevel);
+
+  //function for easylevel selection
+  function easylevel(){
+    //to change level
+    currentLevel = levels.easy;
+    //show seconds in UI
+    seconds.innerHTML = currentLevel;
+  }
+
+  //function for mediumlevel selection
+  function mediumlevel(){
+      //to change level
+    currentLevel = levels.medium;
+    //show seconds in UI
+    seconds.innerHTML = currentLevel;
+}
+
+//function for hardlevel selection
+function hardlevel(){
+    //to change level
+    const currentLevel = levels.hard;
+    //show seconds in UI
+    seconds.innerHTML = currentLevel;
 }
 
 //Start Match
